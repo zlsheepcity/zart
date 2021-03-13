@@ -13,6 +13,16 @@
     outline: 0.25em solid hsla(204, 22%, 55%, 0.8);
 }
 
+.flower-decoration:after {
+  content:'\2740  \2740  \2740';
+  display:block;
+  text-align:center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-size:2rem;
+  color:coral;
+}
+
 
 /* Layout 2013 */
 
@@ -132,7 +142,6 @@ article.big-quote
   margin:0 auto;
   padding:4em 2em;
   line-height:1.5;
-  font-style:italic;
 }
 article.big-quote h1
 {
