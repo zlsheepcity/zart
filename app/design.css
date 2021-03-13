@@ -7,6 +7,11 @@
     }
 }
 
+/* Global components */
+
+.hover-link:hover {
+    outline: 0.25em solid hsla(204, 22%, 55%, 0.8);
+}
 
 
 /* Layout 2013 */
