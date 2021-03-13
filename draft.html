@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- appseed 2020.2.22 ninini -->
+
+    <!-- ===================================== HEAD CONTENT -->
+
+
+    <title>Journey Draft</title>
+    <meta name="description" content="">
+    <meta name="author"      content="zl">
+
+
+    <!-- ## MICRODATA -->
+    <meta property="og:url" content="https://zlsheepcity.github.io/zart/">
+    <meta property="og:image" content="https://zlsheepcity.github.io/zart/art/social_promo.png">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="628">
+    <meta property="og:type"         content="article">
+    <meta property="og:locale"       content="en_US">
+
+
+    <!-- ===================================== FAVICON -->
+
+
+    <meta name="theme-color"             content="#314159">
+    <meta name="msapplication-TileColor" content="#314159">
+    <meta name="msapplication-TileImage" content="art/icon512.png">
+    <link type="image/png" rel="icon"       href="art/icon512.png">
+    <link rel="apple-touch-icon"            href="art/icon512.png">
+
+
+    <!-- ===================================== BOOT SERVICE -->
+
+
+    <!-- ༼°▽°༽ style boot -->
+    <style>
+        html       { margin:0; padding:0  0.25rem; }
+        body       { margin:0; padding:0; width:100%; height:auto; }
+        img,svg,hr { margin:0; border: 0; max-width:100%; }
+        body       { overflow-y:scroll; }
+    </style>
+
+
+    <!-- ༼°▽°༽ screen von loader -->
+    <style id="von-loader-style">
+        #von-loader { /* settings */
+          --back-color:       hsl(212, 34%, 29%);
+          --text-color:       hsl(226, 27%, 90%);
+          --icon-size:        6rem;
+         /* SVG: arrows circle loading */
+          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
+        #von-loader {
+          --state-opacity:    0;
+          --state-pointer:    none;
+            transition:       opacity 240ms ease-out;
+            background-color: var(--back-color);
+            color:            var(--text-color);
+            pointer-events:   var(--state-pointer);
+            opacity:          var(--state-opacity);         
+            position: fixed;  z-index: 100;
+            top:      0;
+            right:    0;
+            bottom:   0;
+            left:     0; }
+        #von-loader.is-active {
+          --state-opacity:    1;
+          --state-pointer:    all; }
+        #von-loader::after {
+            content:  '';
+            position: absolute; z-index: 1;
+            top:      calc(40% - 0.5*var(--icon-size));
+            left:     calc(50% - 0.5*var(--icon-size));
+            width:    var(--icon-size);
+            height:   var(--icon-size);
+            background-image:    var(--icon-image);
+            background-size:     var(--icon-size);
+            background-repeat:   no-repeat;
+            background-position: center center;
+            animation: VonLoaderRotation 1s linear infinite; }
+            @keyframes VonLoaderRotation {
+                from { transform: rotate(360deg); }
+                to   { transform: rotate(  1deg); }
+            }
+    </style>
+    <script id="von-loader-script">
+        function vonLoader ( autostart = true ) {
+            let screen = document.querySelector('body')
+            let loader = document.createElement('div')
+                loader.id = "von-loader"
+                screen.appendChild(loader)
+            let ACTIVE = 'is-active'
+            let show   = () => { loader.classList.add(ACTIVE); }
+            let hide   = () => { loader.classList.remove(ACTIVE) }
+            let action = () => {
+                if (window.addEventListener) window.addEventListener("load", hide, false)
+                else if (window.attachEvent) window.attachEvent(   "onload", hide)
+                else hide() }
+            let start = () => {
+                show()
+                action() }
+            let init = autostart => {
+                if (autostart) start()
+                return { loader, show, hide, start } }
+            return init(autostart)
+        }
+    </script>
+
+    <!-- ===================================== GOOGLE FONTS -->
+
+
+    <!-- ༼°▽°༽ prefetch boot -->
+    <link rel="preconnect"   href="//fonts.gstatic.com" crossorigin>
+
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
+
+<noscript>
+        <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
+        rel="stylesheet">
+    <link
+        media="all"
+        href="https://fonts.googleapis.com/css?family=VT323"
+        rel="stylesheet">
+</noscript>
+
+
+    <!-- ===================================== DESIGN -->
+
+
+    <link
+        media="none" onload="if(media!='all')media='all'"
+        href="app/appart-ready.css"
+        rel="stylesheet" type="text/css">
+        <link
+        media="none" onload="if(media!='all')media='all'"
+        href="app/design.css"
+        rel="stylesheet" type="text/css">
+
+<noscript>
+    <link
+        media="all"
+        href="app/appart-ready.css"
+        rel="stylesheet" type="text/css">
+    <link
+        media="all"
+        href="app/design.css"
+        rel="stylesheet" type="text/css">
+</noscript>
+
+    <style>
+        /* appart update, 2020.9.30 */
+        .chapter-header.gap-layers {
+          grid-row-gap: var(--grid-row-gap);
+        }
+    </style>
+
+
+    <!-- ===================================== APP -->
+
+    <script>
+        /* ༼°▽°༽ app boot */
+        function AppBoot() {
+
+         // The Noble Blastula
+            let app = this
+            app.has = { memory: [], arrived:true }
+            app.has.queens = [ 'onload', 'mutate' ]
+            /*
+            King has arrived --- let app = new AppBoot()
+            Take the Queen ----- app.attach('queen_name')(function)
+            Keep in memory ----- app.queen_name(function_parameters)
+            Execute later ------ app.onload(function)
+            2019.9.15
+            */
+
+         // The Noble Provocator
+            const proteinProvoker = function ImitateCriticalTasks () {
+              let tpp = new this.__proto__.constructor()
+              let must_have_a_memory = tpp.has.memory.push('something')
+              let must_accept_queens = like_this_one => true
+              tpp.attach('queen_id')(must_accept_queens)
+              tpp.queen_id('try this')
+            }
+
+         // Define responsibility
+            const TakeTheQueen = (queen) =>
+                {
+                    app[queen] =  ExecuteLater(queen)
+                    return (f) => ExecuteLater('update')({name:queen,f})
+                }
+            const KeepInMemory = (dna) => app.has.memory.push(dna)
+            const ExecuteLater =
+                 (responsible) =>
+                         (dna) => KeepInMemory({dna,for:responsible})
+
+         // Apply responsibility
+            app.attach = TakeTheQueen
+            app.has.queens.map( queen => app.attach(queen) )
+            app.ForceErrorsIfShouldBe =  proteinProvoker
+        }
+
+        //  -------------------------------- run immidiately
+        let app = new AppBoot()
+        app.ForceErrorsIfShouldBe()
+    </script>
+
+    <script defer src="app/app-core.js"></script>
+
+    <!-- interface -->
+    <script defer src="app/components/image-zzzoom.js"></script>
+    <script defer src="app/components/interface-scroll-to-var.js"></script>
+    <script>app.attach('wayway')</script>
+
+    <!-- ===================================== CUSTOM -->
+
+
+    <!-- ===================================== HEAD END -->
+</head>
+<body class="colors--root">
+<script>//vonLoader()</script>
+
+<style>
+    .screen {
+      --screen-height: 100vh;
+    }
+    /*
+    @media (max-width:50rem) { .screen {
+      --screen-height: 80vh;
+    }}
+    */
+    .screen {
+        position:   relative;
+        z-index:    0;
+        display:    block;
+        width:      100%;
+        min-height: var(--screen-height, 100vh);
+    }
+    .relative-section {
+        background-color: var(--back-color, white);
+                   color: var(--text-color, black);
+    }
+    .screen-wrap {
+        position:   relative;
+        z-index:    1;
+        display:    block;
+        width:      100%;
+        height:     var(--screen-height, 100vh);
+        overflow:   hidden;
+    }
+    .cover-image {
+        background-position:   50% 50%;
+        background-size:       cover;
+        background-attachment: fixed;
+    }
+    .map-box {
+        position:   fixed;
+        z-index:    0;
+        top:        0;
+        left:       0;
+        width:      100%;
+        height:     var(--screen-height, 100vh);
+        overflow:   hidden;
+    }
+    .map-box img {
+        width:      auto;
+        min-width:  100%;
+        height:     var(--screen-height, 100vh);
+        object-fit: cover;
+        object-position: 50% 50%;
+        transform:  scale(var(--scale,var(--scale-default,1)));
+        transform-origin: center center;
+        transition: transform 100ms linear;
+    }
+</style>
+
+
+<!-- ========================== Для взрослых -->
+
+
+<section class="chapter relative-section colors--root">
+
+    <section class="articles">
+
+    <header>
+        <h1><a name="randomstories">Случайные истории</a></h1>
+    </header>
+
+    <article>
+      <h1><a href="dasha-na-gore/">Про девочку Дашу и большую гору</a></h1>
+      «Ради такой горы я готова быть самой глупой дурочкой на свете. Но я заберусь на эту вершину и тогда стану самой умной умницей на свете!»<br>
+      «Ну-ну, давай попытайся», — как бы сказала гора, потому что она была очень большая. Но на самом деле гора ничего не сказала, потому что горы не разговаривают.
+    </article>
+    
+    <article>
+      <h1><a href="vihodnoi/">История про девушку в ее выходной день</a></h1>
+      Булочник шепнул ей огромный секрет: «Если вы подождете пару минут, я положу вам самые свежие шоколатины в городе.»
+    </article>
+
+    <article>
+      <h1><a href="kosenozhka/">Фея-косеножка</a></h1>
+      Когда она спала, к ней приходила ночная фея и делала радости.<br>
+    </article>
+
+    <article>
+      <h1><a href="cherepaha-farmaceft/">Истории про снеговика Женю</a></h1>
+      Однажды в середине февраля ворона Элеонора сидела неподалёку от снеговика Жени и лепила маленьких вуду-снеговичков
+    </article>
+    
+    <article>
+      <h1><a href="pritchi-mudrogo-filina/">Рассказы мудрого филина</a></h1>
+      Внутри камня-отца великая мудрость. Говорят сам Лунный Дракон в древние времена подлетал к камню и спрашивал совета, как ему поделить небо с солнечным братом. Так на земле появились день и ночь.
+    </article>
+
+    <article>
+      <h1><a href="scarytales/">«Кофе без фигни» и другие современные страшилки</a></h1>
+      Один хипстер шел по темной улице и его побили пионеры. Отобрали сумку, айфон и шарф. Бедолага еле добрался до хот-спота с бесплатным вайфаем и зачекинился там. Хипстера подобрала девушка на велосипеде, которая потом родила от него детей — близнецов мальчика и девочку. Назвали Вай и Фай.
+    </article>
+
+    <article>
+      <h1><a href="scenario/">Детский лагерь</a></h1>
+      (сценарий пилотной серии сериала)<br>
+    </article>
+
+    <article>
+      <h1><a href="patric-chan/">Патрик Чан: заметки современников</a></h1>
+      В конце девяностых ходила легенда про Патрика Чана. Что у него член в форме лампочки. Поэтому все девушки боялись делать Патрику Чану минет ...
+    </article>
+
+    <article>
+      <h1><a href="horek_polzunok/">Хорек-ползунок</a></h1>
+      «Эта сказка шизеет на глазах», — хотел сказать хорек-ползунок, но у него получилось — «Эта сказка шерстеет»
+    </article>
+
+    <article>
+      <h1><a href="mitenotova/">Енотова мыть</a></h1>
+      И жена звонит мужу на сердитой волне:<br>
+      «Так, дорогой, вода в ванне, йе?»<br>
+      «Эээ, ну только если на дне...»<br>
+      «А будет когда? К весне?<br>
+      Ты что, захотел по балде?»<br>
+    </article>
+
+    <article>
+        
+        <h1><a href="polulososi/">Про полулососей</a></h1><br>
+        <a href="polulososi/"><img src="polulososi/halfsalmon.jpg" class="instead-of-text"></a>
+        
+    </article>
+
+  </section>
+
+</section>
+
+
+<!-- ========================== Неслучайные истории -->
+
+
+<section class="chapter relative-section colors--root">
+
+    <section class="articles">
+
+    <header>
+        <h1><a name="randomstories">Yeti News 2020</a></h1>
+    </header>
+
+    <article>
+        <h1>Пёс матрос</h1>
+        <img src="art/pesmatros-test.png">
+    </article>
+
+    <article>
+      <h1><a href="http://yetinews.com/articles/whtml/">ХТМЛ для женщин 2008</a></h1>
+      Кому это нужно? Этот рассказ посвящен подневольным красавицам, кому злой рок каждый день наказывает:
+      <ul>
+      <li> «заходить в администраторскую панель сайта»;
+      <li> «написать на этом интернет-портале новую новость»;
+      <li> или даже «дорогая, исправьте информацию о нашей компании на страничке».
+      </ul>
+<!--      <div style="text-align:center;"><img src="http://yetinews.com/articles/whtml/muxa.gif"></div>-->
+    </article>
+
+    <article>
+<!--        <img src="pictures/eleven.jpg" class="instead-of-text">-->
+        <h1><a href="http://yetinews.com/articles/culture/11/">Одиннадцать: факты, теории, мнения</a></h1>
+        Люди племени тихоокеанского острова Мау умели считать до четырех, дальше не умели, но умели считать ровно одиннадцать, и дальше опять не умели.
+    </article>
+
+    <article>
+      <h1><a href="new-year/">Планы на Новый год</a></h1>
+      Во все времена, красивый оригинальный ответ отличал простолюдина от благородного человека. Художники и поэты воспевали героев, добравшихся до края земли в поисках удобного места для праздничного стола. Великие ученые опережали свое время, предложением отмечать праздник нетрадиционным способом.
+    </article>
+    
+    <article>
+      <h1><a href="munhauzen/">Барон Мюнхаузен — лжец или Иммануил Кант</a></h1>
+      Барона Мюнхаузена принято считать эталоном лгуна. Его рассказы подаются как анекдотические, а имя используется как нарицательное для любого заведомо ложного рассказчика. Но совсем другой образ барона встает перед нами, если взглянуть на его истории через фильтр аллегорий и скрытого смысла.
+    </article>
+
+
+
+    </section>
+
+</section>
+
+
+
+
+
+
+
+<!-- ========================== FOOTER -->
+
+
+<footer class="relative-section" style="background:white">
+    <picture>
+        <img
+            src="art/fields-of-sheep.jpg"
+            alt="450 sheep illustrated"
+            style="width:100%">
+    </picture>
+</footer>
+
+<!-- ========================== DEV -->
+
+
+<!-- ============================ ʕ⊙ᴥ⊙ʔ -->
+<!-- ========================== BODY END -->
+
+</body>
+</html>
