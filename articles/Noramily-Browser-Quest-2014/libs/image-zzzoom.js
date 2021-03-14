@@ -237,7 +237,7 @@ let imageZzzzoom = function zoomZoomZangBased (o) {
 //* ------------------------------------------- DEFINE STARTER
 
 
-function ActivateImageZzzoom(theme_bg_color = "#FFFFFF") {
+function ActivateImageZzzoom(theme_bg_color = "#000000") {
 
  // activate library
     imageZzzzoom(zzzCommander)
