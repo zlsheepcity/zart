@@ -542,7 +542,7 @@
     <!-- CONTENT HEADER -->
 
     <article class="chapter isontop grid-queen is-without-root">
-        <header class="chapter isontop chapter-header inngrid gap-layers">
+        <header class="chapter-header inngrid gap-layers">
             <h1>Путешествие по сказочным странам</h1>
             <p>Рисунки и рассказы 1995—2020</p>
         </header>
@@ -576,12 +576,14 @@
 
 <section class="chapter relative-section colors--primary">
     <picture class="grid-queen is-without-root">
-        <figure class="chapter inngrid">
+        <figure class="inngrid">
+            <div class="layer">
             <img
                 src="art/OhHolySheepMovie.gif"
                 alt="Sheep city animation"
                 class="zzz"
                 style="border: 0.25em solid slategray; border-radius:2em;">
+            </div>
         </figure>
     </picture>
 </section>
@@ -593,17 +595,13 @@
 
     <article class="chapter isontop grid-queen is-without-root">
 
-        <picture class="inngrid-full">
-            <source media="(min-width:600px)" srcset="articles/sheep-city/art/sheepcity__cover.svg">
-            <img src="articles/sheep-city/art/min/sheepcity__cover.png" alt="Sheep City" class="" />
-        </picture>
-
         <header class="article-chapter-header sublayer join-layers">
             <div class="inngrid-west e-align h2">※</div>
             <div class="chapter-header">
                 <h2>Долгие поездки</h2>
             </div>
         </header>
+
         <figure class="subgrid-wrap-east join-layers">
             <figcaption>
 
@@ -624,7 +622,8 @@
                 <a href="articles/olechka-yascherki/index.html" class="hover-link">
                 <img
                     src="articles/olechka-yascherki/page-preview.jpg"
-                    alt="Article preview">
+                    alt="Article preview"
+                    style="border: 0.20em solid black;"/>
                 </a>
             </div>
         </figure>
@@ -652,7 +651,8 @@
                 <a href="articles/sheep-city/index.html" class="hover-link">
                 <img
                     src="articles/sheep-city/page-preview.png"
-                    alt="Article preview">
+                    alt="Article preview"
+                    style="border: 0.20em solid black;"/>
                 </a>
             </div>
         </figure>
@@ -673,10 +673,13 @@
            </figcaption>
             <div class="inngrid-east">
                 <a href="articles/kandavane/index.html" class="hover-link">
-                <img src="articles/kandavane/preview.png" alt="Article preview">
+                <img src="articles/kandavane/preview.png" alt="Article preview"
+                    style="border: 0.20em solid black;"/>
                 </a>
             </div>
         </figure>
+
+        <div class="chapter isonbot subgrid-wrap">
 
         <figure class="subgrid-wrap-east color-box">
             <picture class="inngrid">
@@ -687,6 +690,7 @@
                         "
                      src="articles/kandavane/art/abavas-Ieleja--image-l.jpg"
                      class="zzz"
+                     style="border: 0.20em solid slategray; border-radius:1em;"
                      alt="Abava river valley, illustrated map"/>
             </picture>
             <div class="chapter-note">
@@ -710,6 +714,7 @@
                         "
                      src="art/alps-colors2018-preview.jpg"
                      class="zzz"
+                     style="border: 0.20em solid slategray; border-radius:1em;"
                      alt="Alps, illustrated map"/>
             </picture>
             <div class="chapter-note">
@@ -721,6 +726,8 @@
                 </p>
             </div>
         </figure>
+
+        </div>
 
     </article>
 
