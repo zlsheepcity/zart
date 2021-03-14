@@ -13,6 +13,14 @@
     outline: 0.25em solid hsla(204, 22%, 55%, 0.8);
 }
 
+.illustration-for-link {
+    border: 0.25em solid currentColor;
+}
+.illustration-for-zoom {
+    border: 0.25em solid slategray;
+    border-radius: 1em;
+}
+
 .flower-decoration:after {
   content:'\2740  \2740  \2740';
   display:block;
@@ -23,6 +31,19 @@
   color:coral;
 }
 
+.colors--transparent-sky {
+  --back-color:         hsla(226, 27%, 90%, 0.9);
+  --back-color-accent:  hsla(226, 27%, 90%, 0.9);
+  --back-color-descent: hsla(226, 27%, 90%, 0.9);
+
+  --text-color:         black;
+  --text-color-accent:  darkslategray;
+  --text-color-descent: lightslategray;
+
+  --link-color:         firebrick;
+  --link-color-accent:  darkred;
+  --link-color-descent: lightsteelblue;
+}
 
 /* Layout 2013 */
 
@@ -140,7 +161,7 @@ article.big-quote
   width:70%;
   max-width:700px;
   margin:0 auto;
-  padding:4em 2em;
+  padding:4em 0em;
   line-height:1.5;
 }
 article.big-quote h1

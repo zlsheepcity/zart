@@ -1,0 +1,80 @@
+body
+{
+    background:black;
+    text-align:center;
+}
+
+
+/****************************************************************/
+#GamePanel {
+    display:block;
+    position:absolute;
+    left:0;
+    top:8px;
+    width:80px;
+}
+
+#GamePanel ul {
+    text-align:center;
+    transition:all .5s;
+}
+#GamePanel ul:hover { background:black; }
+#GamePanel li {
+    display:inline-block;
+    vertical-align:top;
+    width:80px;
+    height:80px;
+    background: url(pics/prizeicon-nut.png) 0 0 no-repeat;
+    position:relative;
+}
+#GamePanel li#PanelNut { background-image: url(pics/prizeicon-nut.png); }
+#GamePanel li#PanelCup { background-image: url(pics/prizeicon-cup.png); }
+#GamePanel li#PanelTik { background-image: url(pics/prizeicon-ticker.png); }
+#GamePanel li#PanelOck { background-image: url(pics/prizeicon-glasses.png); }
+#GamePanel li#PanelFin { background-image: none; }
+
+#GamePanel li img {
+    width:80px;
+    height:80px;
+    display:none;
+}
+#GamePanel li#PanelFin img {
+    height: auto;
+}
+#GamePanel li.is-complete img {
+    display:block;
+}
+
+
+/****************************************************************/
+#GameScreen {
+    display:block;
+    width:auto;
+    vertical-align:top;
+    margin:8px 90px;
+    position:relative;
+    overflow:hidden;
+    background:white;
+}
+#GameScreen:before {
+  content:'';
+  width:0px;
+  background:red;
+  padding-top:60%;
+  float:left;
+}
+
+#GameScene {
+    width:100%;
+    position:absolute;
+    overflow:hidden;
+    bottom:0;
+    left:0;
+}
+#GameScene:before {
+  content:'';
+  width:0px;
+  background:red;
+  padding-top:100%;
+  float:left;
+}

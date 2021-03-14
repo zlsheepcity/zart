@@ -1,0 +1,192 @@
+.items > div[id] {
+    position:absolute;
+    background-size:100% auto;
+}
+.items > div[id] > img {
+    width:100%;
+    height:auto;
+}
+
+#Background-Sky-Winter {
+    width:120%;
+    height:auto;
+    bottom:32.7%;
+    left:-10%;
+    transition:all 1s;
+}
+#Background-Sky-Winter.sea { bottom:0%; }
+
+
+#PapaTheSheep {
+    width:23.3%;
+    height:18.7%;
+    bottom:5.3%;
+    left:36.2%;
+}
+#Sun {
+    width:11.6%;
+    height:10.8%;
+    bottom:47.1%;
+    left:61.5%;
+}
+#BelkinDom {
+    width:35.2%;
+    height:41.2%;
+    bottom:10.8%;
+    left:9.5%;
+}
+#BelkinKolokol {
+    width:1.9%;
+    height:7.0%;
+    bottom:28.8%;
+    left:34%;
+}
+#BelkinSyn {
+    width:7.7%;
+    height:6.8%;
+    bottom:39.9%;
+    left:34.4%;
+}
+#BelkinSyn.goToWork {
+    bottom:7.7%;
+    left:72.1%;
+}
+#BelkinDoch {
+    width:7.9%;
+    height:7.5%;
+    bottom:32.3%;
+    left:11.4%;
+}
+#BelkinDoch.goToWork {
+    bottom:4.6%;
+    left:90.8%;
+}
+#SnowmanBottom {
+    width:17.6%;
+    height:17.3%;
+    bottom:7.2%;
+    left:75.9%;
+}
+#SnowmanMiddle {
+    width:18.4%;
+    height:11.3%;
+    bottom:23.3%;
+    left:75.3%;
+}
+#SnowmanHead {
+    width:14.2%;
+    height:12.2%;
+    bottom:34.1%;
+    left:76.3%;
+}
+#LeoTheSheep {
+    width:14.6%;
+    height:13.4%;
+    bottom:5.7%;
+    left:55.6%;
+}
+#MamaTheSheep {
+    width:18.7%;
+    height:16.0%;
+    bottom:5.3%;
+    left:3.6%;
+}
+#SweetHome {
+    width:28.4%;
+    height:25.6%;
+    bottom:22.8%;
+    left:10.3%;
+}
+#PostBox {
+    width:9.3%;
+    height:18.0%;
+    bottom:22.0%;
+    left:35.9%;
+}
+#Tucka {
+    width:12.7%;
+    height:6.8%;
+    bottom:48.0%;
+    left:32.1%;
+}
+#Tucka.big {
+    width:25.4%;
+    height:13.7%;
+    bottom:45.0%;
+    left:24.5%;
+}
+#Tucka.big.nosun { left:44.2%; transition:all 1s; }
+#Sea {
+    width:100%;
+    height:7.7%;
+    bottom:17.4%;
+    left:0%;
+    transition:all 1s;
+}
+#Sea.deeper { bottom:36.6%; }
+#Sea:after {
+    content:'';
+    display:block;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    min-height:600px;
+    margin-top:-.5px;
+    background:url(pics/sea-water.jpg) top left no-repeat;
+    background-size:100% auto;
+}
+#Sea img.water { display:none; }
+#Plane {
+    width:24.5%;
+    height:15.3%;
+    bottom:27.8%;
+    left:3.0%;
+}
+#ShipTheShip {
+    width:29.6%;
+    height:23.9%;
+    bottom:19.9%;
+    left:0%;
+}
+#Island {
+    width:54.9%;
+    height:35.3%;
+    bottom:3.5%;
+    left:25.4%;
+}
+#MamaEnjoy {
+    width:28.4%;
+    height:17.8%;
+    bottom:5.5%;
+    left:31.6%;
+}
+#MamaEnjoy img.enjoy2 { display:none; }
+#MamaEnjoy.enjoyMore {
+    width:21.4%;
+    height:21.5%;
+    bottom:6.3%;
+    left:39.7%;
+}
+#MamaEnjoy.enjoyMore img.enjoy1 { display:none; }
+#MamaEnjoy.enjoyMore img.enjoy2 { display:inline-block; }
+
+
+#MamaLonely {
+    width:19.7%;
+    height:20.9%;
+    bottom:9.9%;
+    left:43.7%;
+}
+#Koffer {
+    width:9.0%;
+    height:9.0%;
+    bottom:8.1%;
+    left:34.0%;
+}
+#Phone {
+    width:17.1%;
+    height:23.5%;
+    bottom:13.7%;
+    left:14.8%;
+}
