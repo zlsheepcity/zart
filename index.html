@@ -45,70 +45,6 @@
     </style>
 
 
-    <!-- ༼°▽°༽ screen von loader -->
-    <style id="von-loader-style">
-        #von-loader { /* settings */
-          --back-color:       hsl(212, 34%, 29%);
-          --text-color:       hsl(226, 27%, 90%);
-          --icon-size:        6rem;
-         /* SVG: arrows circle loading */
-          --icon-image: url('data:image/svg+xml;utf8,<svg fill="white" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>'); }
-        #von-loader {
-          --state-opacity:    0;
-          --state-pointer:    none;
-            transition:       opacity 240ms ease-out;
-            background-color: var(--back-color);
-            color:            var(--text-color);
-            pointer-events:   var(--state-pointer);
-            opacity:          var(--state-opacity);         
-            position: fixed;  z-index: 100;
-            top:      0;
-            right:    0;
-            bottom:   0;
-            left:     0; }
-        #von-loader.is-active {
-          --state-opacity:    1;
-          --state-pointer:    all; }
-        #von-loader::after {
-            content:  '';
-            position: absolute; z-index: 1;
-            top:      calc(40% - 0.5*var(--icon-size));
-            left:     calc(50% - 0.5*var(--icon-size));
-            width:    var(--icon-size);
-            height:   var(--icon-size);
-            background-image:    var(--icon-image);
-            background-size:     var(--icon-size);
-            background-repeat:   no-repeat;
-            background-position: center center;
-            animation: VonLoaderRotation 1s linear infinite; }
-            @keyframes VonLoaderRotation {
-                from { transform: rotate(360deg); }
-                to   { transform: rotate(  1deg); }
-            }
-    </style>
-    <script id="von-loader-script">
-        function vonLoader ( autostart = true ) {
-            let screen = document.querySelector('body')
-            let loader = document.createElement('div')
-                loader.id = "von-loader"
-                screen.appendChild(loader)
-            let ACTIVE = 'is-active'
-            let show   = () => { loader.classList.add(ACTIVE); }
-            let hide   = () => { loader.classList.remove(ACTIVE) }
-            let action = () => {
-                if (window.addEventListener) window.addEventListener("load", hide, false)
-                else if (window.attachEvent) window.attachEvent(   "onload", hide)
-                else hide() }
-            let start = () => {
-                show()
-                action() }
-            let init = autostart => {
-                if (autostart) start()
-                return { loader, show, hide, start } }
-            return init(autostart)
-        }
-    </script>
-
     <!-- ===================================== GOOGLE FONTS -->
 
 
@@ -125,7 +61,7 @@
         rel="stylesheet">
 
 <noscript>
-        <link
+    <link
         media="all"
         href="https://fonts.googleapis.com/css?family=Vollkorn:400,400i,700&subset=cyrillic"
         rel="stylesheet">
@@ -165,6 +101,59 @@
           grid-row-gap: var(--grid-row-gap);
         }
     </style>
+
+    <style>
+        /* index design */
+        .screen {
+          --screen-height: 100vh;
+        }
+        .screen {
+            position:   relative;
+            z-index:    0;
+            display:    block;
+            width:      100%;
+            min-height: var(--screen-height, 100vh);
+        }
+        .relative-section {
+            background-color: var(--back-color, white);
+                       color: var(--text-color, black);
+        }
+        .screen-wrap {
+            position:   relative;
+            z-index:    1;
+            display:    block;
+            width:      100%;
+            height:     var(--screen-height, 100vh);
+            overflow:   hidden;
+        }
+        .cover-image {
+            background-position:   50% 50%;
+            background-size:       cover;
+            background-attachment: fixed;
+        }
+        .map-box {
+            position:   fixed;
+            z-index:    0;
+            top:        0;
+            left:       0;
+            width:      100%;
+            height:     var(--screen-height, 100vh);
+            overflow:   hidden;
+        }
+        .map-box img {
+            width:      auto;
+            min-width:  100%;
+            height:     var(--screen-height, 100vh);
+            object-fit: cover;
+            object-position: 50% 50%;
+            transform:  scale(var(--scale,var(--scale-default,1)));
+            transform-origin: center center;
+            transition: transform 100ms linear;
+        }
+    </style>
+
+    <link rel="preload" as="image"
+        href="art/map-l.jpg">
 
 
     <!-- ===================================== APP -->
@@ -229,65 +218,8 @@
     <!-- ===================================== HEAD END -->
 </head>
 <body class="colors--root">
-<script>//vonLoader()</script>
 
-<style>
-    .screen {
-      --screen-height: 100vh;
-    }
-    /*
-    @media (max-width:50rem) { .screen {
-      --screen-height: 80vh;
-    }}
-    */
-    .screen {
-        position:   relative;
-        z-index:    0;
-        display:    block;
-        width:      100%;
-        min-height: var(--screen-height, 100vh);
-    }
-    .relative-section {
-        background-color: var(--back-color, white);
-                   color: var(--text-color, black);
-    }
-    .screen-wrap {
-        position:   relative;
-        z-index:    1;
-        display:    block;
-        width:      100%;
-        height:     var(--screen-height, 100vh);
-        overflow:   hidden;
-    }
-    .cover-image {
-        background-position:   50% 50%;
-        background-size:       cover;
-        background-attachment: fixed;
-    }
-    .map-box {
-        position:   fixed;
-        z-index:    0;
-        top:        0;
-        left:       0;
-        width:      100%;
-        height:     var(--screen-height, 100vh);
-        overflow:   hidden;
-    }
-    .map-box img {
-        width:      auto;
-        min-width:  100%;
-        height:     var(--screen-height, 100vh);
-        object-fit: cover;
-        object-position: 50% 50%;
-        transform:  scale(var(--scale,var(--scale-default,1)));
-        transform-origin: center center;
-        transition: transform 100ms linear;
-    }
-</style>
-
-
-<!-- ========================== COLOR MAP -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - COLOR MAP -->
 
 <section>
     <style>
@@ -296,11 +228,11 @@
             z-index:       -2;
             margin-bottom: -10vh;
         }
-        .elCovermap .cover-image { background-image: url(art/map-l.jpg); }
     </style>
     <div class="screen elCovermap">
     <div class="screen-wrap">
     <picture class="map-box">
+<!-- // do not reduce cover image quality
         <img srcset="art/map-l.jpg 2020w,
                      art/map-m.jpg 1243w,
                      art/map-s.jpg 1010w"
@@ -309,10 +241,16 @@
                                         2020px"
              src="art/map-s.jpg"
              alt="World Map"/>
+-->
+        <img
+             src="art/map-l.jpg"
+             alt="World Map"/>
+
     </picture>
     </div>
     </div>
     <script>
+        // scale on scroll
         app.wayway({
             elem: document.querySelector('.elCovermap'),
             from: 'bottom-bottom',
@@ -323,9 +261,7 @@
     </script>
 </section>
 
-
-<!-- ========================== AFTER MAP -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - AFTER MAP -->
 
 <section>
     <style>
@@ -529,6 +465,7 @@
         </figure>
         <div class="space"></div>
         <script>
+            // move character eyes on scroll
             app.wayway({
                 elem: document.querySelector('.elWelcomeCharacter'),
                 from: 'bottom-bottom',
@@ -543,13 +480,18 @@
 
     <article class="chapter isontop grid-queen is-without-root">
         <header class="chapter-header inngrid gap-layers">
-            <h1>Путешествие по сказочным странам</h1>
-            <p>Рисунки и рассказы 1995—2020</p>
+            <h1>
+                Путешествие по сказочным странам
+            </h1>
+            <p>
+                Рисунки и рассказы 1995—2020
+            </p>
         </header>
         <picture class="inngrid-wrap-east">
             <figure class="layer">
                 <img
                     src="art/equipment.jpg"
+                    loading="lazy"
                     alt="Equipment illustration"
                     style="border: 0.25em solid black;">
             </figure>
@@ -562,7 +504,7 @@
                 Я посещал много мест и знакомился с людьми. Видел много интересных историй, но уже не помню точных названий, имён и других деталей. Пусть это будут истории про овечек в сказочных странах.
             </p>
             <p>
-                Зиновий<br>
+                Зиновий <br>
                 zl, 2021
             </p>
         </div>
@@ -572,7 +514,7 @@
     </div>
 </section>
 
-<!-- ========================== Animated introduction -->
+<!-- - - - - - - - - - - - - - - - - - - - - - Animated introduction -->
 
 <section class="chapter relative-section colors--primary">
     <picture class="grid-queen is-without-root">
@@ -580,6 +522,7 @@
             <div class="layer">
             <img
                 src="art/OhHolySheepMovie.gif"
+                loading="lazy"
                 alt="Sheep city animation"
                 class="zzz"
                 style="border: 0.25em solid slategray; border-radius:2em;">
@@ -588,17 +531,126 @@
     </picture>
 </section>
 
-<!-- ========================== LONG STORIES -->
+<!-- - - - - - - - - - - - - - - - - - - - - - SITE MAP -->
 
-
-<section class="chapter relative-section colors--root">
-
-    <article class="chapter isontop grid-queen is-without-root">
+<section class="chapter relative-section colors--ivory">
+    <article class="chapter isontop grid-queen is-without-root" id="Sitemap">
 
         <header class="article-chapter-header sublayer join-layers">
             <div class="inngrid-west e-align h2">※</div>
             <div class="chapter-header">
-                <h2>Долгие поездки</h2>
+                <h2>
+                    Карта сайта
+                </h2>
+            </div>
+        </header>
+
+        <nav class="layer">
+            <div class="group-collisting auto-margin el-topics">
+
+                <article>
+                    <a href="#LongStories" class="h4">
+                        ※ Долгие поездки
+                    </a>
+                </article>
+
+                <article>
+                    <a href="#Prepare" class="h4">
+                        ※ Подготовка
+                    </a>
+                </article>
+
+                <article>
+                    <a href="#Locals" class="h4">
+                        ※ Местные жители
+                    </a>
+                </article>
+
+                <article>
+                    <a href="#Animals" class="h5">
+                        Рассказы про зверей
+                    </a>
+                </article>
+
+                <article>
+                    <a href="#Humans" class="h5">
+                        Рассказы про людей
+                    </a>
+                </article>
+
+                <article>
+                    <a href="#TheEnd" class="h4">
+                        ※ Конец
+                    </a>
+                </article>
+
+            </div>
+        </nav>
+
+        <header class="article-chapter-header sublayer join-layers">
+            <div class="inngrid-west e-align h2">※</div>
+            <div class="chapter-header">
+                <h2>
+                    Другие карты
+                </h2>
+            </div>
+        </header>
+
+        <figure class="subgrid-wrap-east color-box">
+            <picture class="inngrid">
+                <img
+                     src="articles/kandavane/art/abavas-Ieleja--image-l.jpg"
+                     loading="lazy"
+                     class="zzz"
+                     style="border: 0.20em solid slategray; border-radius:1em;"
+                     alt="Abava river valley, illustrated map"/>
+            </picture>
+            <div class="chapter-note">
+                <p>
+                    Долина реки Абава между городами Кандава и Ване.
+                </p>
+                <p>
+                    2018
+                </p>
+            </div>
+        </figure>
+
+        <!-- apls -->
+
+        <figure class="subgrid-wrap-east color-box">
+            <picture class="inngrid">
+                <img
+                     src="art/alps-colors2018-preview.jpg"
+                     loading="lazy"
+                     class="zzz illustration-for-zoom"
+                     alt="Alps, illustrated map"/>
+            </picture>
+            <div class="chapter-note">
+                <p>
+                    Альпы.
+                </p>
+                <p>
+                    2017—2018
+                </p>
+            </div>
+        </figure>
+
+
+    </article>
+</section>
+
+<!-- - - - - - - - - - - - - - - - - - - - - - LONG STORIES -->
+
+<section class="chapter relative-section colors--root">
+
+    <article class="chapter isontop grid-queen is-without-root" id="LongStories">
+
+        <header class="article-chapter-header sublayer join-layers">
+            <div class="inngrid-west e-align h2">※</div>
+            <div class="chapter-header">
+                <h2>
+                    Долгие поездки
+                </h2>
             </div>
         </header>
 
@@ -622,6 +674,7 @@
                 <a href="articles/olechka-yascherki/index.html" class="hover-link">
                 <img
                     src="articles/olechka-yascherki/page-preview.jpg"
+                    loading="lazy"
                     alt="Article preview"
                     style="border: 0.20em solid black;"/>
                 </a>
@@ -651,6 +704,7 @@
                 <a href="articles/sheep-city/index.html" class="hover-link">
                 <img
                     src="articles/sheep-city/page-preview.png"
+                    loading="lazy"
                     alt="Article preview"
                     style="border: 0.20em solid black;"/>
                 </a>
@@ -675,70 +729,21 @@
                 <a href="articles/kandavane/index.html" class="hover-link">
                 <img
                     src="articles/kandavane/preview.png"
+                    loading="lazy"
                     alt="Article preview"
                     class="illustration-for-link"/>
                 </a>
             </div>
         </figure>
 
-        <div class="chapter isonbot subgrid-wrap">
-
-        <figure class="subgrid-wrap-east color-box">
-            <picture class="inngrid">
-                <img srcset="
-                        articles/kandavane/art/abavas-Ieleja--image-l.jpg 2000w,
-                        articles/kandavane/art/abavas-Ieleja--image-m.jpg 1500w,
-                        articles/kandavane/art/abavas-Ieleja--image-s.jpg 1000w
-                        "
-                     src="articles/kandavane/art/abavas-Ieleja--image-l.jpg"
-                     class="zzz"
-                     style="border: 0.20em solid slategray; border-radius:1em;"
-                     alt="Abava river valley, illustrated map"/>
-            </picture>
-            <div class="chapter-note">
-                <p>
-                    Долина реки Абава между городами Кандава и Ване.
-                </p>
-                <p>
-                    Рисунок, 2018
-                </p>
-            </div>
-        </figure>
-
-        <!-- apls -->
-
-        <figure class="subgrid-wrap-east color-box">
-            <picture class="inngrid">
-                <img srcset="
-                        art/alps-colors2018-preview.jpg 2000w,
-                        art/alps-colors2018-preview--m.jpg 1500w,
-                        art/alps-colors2018-preview--s.jpg 1000w
-                        "
-                     src="art/alps-colors2018-preview.jpg"
-                     class="zzz illustration-for-zoom"
-                     alt="Alps, illustrated map"/>
-            </picture>
-            <div class="chapter-note">
-                <p>
-                    Альпы
-                </p>
-                <p>
-                    Рисунок, 2017—2018
-                </p>
-            </div>
-        </figure>
-
-        </div>
-
     </article>
 
 </section>
 
-
-<!-- ========================== TRAVEL PREPARATION -->
+<!-- - - - - - - - - - - - - - - - - - - - - - TRAVEL PREPARATION -->
 
 <section class="chapter relative-section colors--secondary">
-    <article class="chapter grid-queen is-without-root">
+    <article class="chapter grid-queen is-without-root" id="Prepare">
         <header class="article-chapter-header sublayer join-layers">
             <div class="inngrid-west e-align h2">※</div>
             <div class="chapter-header">
@@ -747,7 +752,6 @@
                 </h2>
             </div>
         </header>
-
     </article>
 </section>
 
@@ -800,6 +804,7 @@
                         class="hover-link">
                     <img
                         src="articles/Noramily-Browser-Quest-2014/cover.jpg"
+                        loading="lazy"
                         class="illustration-for-link"
                         alt="Noramily Browser Quest cover with sheeps"
                         />
@@ -812,15 +817,16 @@
     </div>
 </section>
 
-<!-- ========================== STORIES INTRO -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - STORIES INTRO -->
 
 <section class="chapter relative-section colors--secondary">
-    <article class="chapter grid-queen is-without-root">
+    <article class="chapter grid-queen is-without-root" id="Locals">
         <header class="article-chapter-header sublayer join-layers">
             <div class="inngrid-west e-align h2">※</div>
             <div class="chapter-header">
-                <h2>Местные жители</h2>
+                <h2>
+                    Местные жители
+                </h2>
                 <p>
                     Звери, люди и вещи
                 </p>
@@ -830,6 +836,7 @@
             <picture>
                 <img
                     src="art/haski-preview.jpg"
+                    loading="lazy"
                     alt="Huskies playing pocker"
                     class="zzz illustration-for-zoom">
             </picture>
@@ -845,14 +852,12 @@
     </article>
 </section>
 
-
-<!-- ========================== ANIMAL STORIES -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - ANIMAL STORIES -->
 
 <section class="chapter relative-section colors--root">
-    <header class="chapter isontop grid-queen is-without-root">
+    <header class="chapter isontop grid-queen is-without-root" id="Animals">
         <picture>
-            <img src="art/slon.jpg" alt="Slon infografics" class="zzz"/>
+            <img src="art/slon.jpg" loading="lazy" alt="Slon infografics" class="zzz"/>
         </picture>
     </header>
     <section class="articles with-right-collumn">
@@ -862,7 +867,7 @@
         </header>
 
         <section class="collumn-right">
-            <img src="art/labokrisa-2goda.png" alt="Еще два года на лабораторию, тогда заживу!">
+            <img src="art/labokrisa-2goda.png" loading="lazy" alt="Еще два года на лабораторию, тогда заживу!">
         </section>
 
         <article class="flower-decoration">
@@ -891,9 +896,7 @@
     </section>
 </section>
 
-
-<!-- ========================== Animals love something -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - Animals love something -->
 
 <section class="chapter relative-section colors--primary">
     <article class="grid-queen is-without-root">
@@ -920,15 +923,14 @@
         <figure class="inngrid-east-side-rw wc-align">
             <img
                 src="stories/animals_belka/belka2.jpg"
+                loading="lazy"
                 alt="Наталья Никольцева"
                 >
         </figure>
     </article>
 </section>
 
-
-<!-- ========================== Slider he loves me -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - Slider he loves me -->
 
 <section class="relative-section colors--root">
     <style>
@@ -956,7 +958,7 @@
     </style>
     <article class="slide-book chapter">
         <footer class="box">
-            <img src="articles/helovesme/helovesme.png" alt="">
+            <img src="articles/helovesme/helovesme.png" loading="lazy" alt="">
             <p>Париж, 2011</p>
             <p>
                 «Любит не любит»<br>
@@ -968,47 +970,45 @@
             </p>
         </footer>
         <figure>
-            <img src="articles/helovesme/01.jpg" alt="">
+            <img src="articles/helovesme/01.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/02.jpg" alt="">
+            <img src="articles/helovesme/02.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/03.jpg" alt="">
+            <img src="articles/helovesme/03.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/04.jpg" alt="">
+            <img src="articles/helovesme/04.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/05.jpg" alt="">
+            <img src="articles/helovesme/05.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/06.jpg" alt="">
+            <img src="articles/helovesme/06.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/07.jpg" alt="">
+            <img src="articles/helovesme/07.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/08.jpg" alt="">
+            <img src="articles/helovesme/08.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/09.jpg" alt="">
+            <img src="articles/helovesme/09.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/10.jpg" alt="">
+            <img src="articles/helovesme/10.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/11.jpg" alt="">
+            <img src="articles/helovesme/11.jpg" loading="lazy" alt="">
         </figure>
         <figure>
-            <img src="articles/helovesme/12.jpg" alt="">
+            <img src="articles/helovesme/12.jpg" loading="lazy" alt="">
         </figure>
     </article>
 </section>
 
-
-<!-- ========================== Аглая -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - Аглая -->
 
 <section class="relative-section colors--secondary">
 
@@ -1039,27 +1039,27 @@
 
 </section>
 
-
-<!-- ========================== Про людей -->
+<!-- - - - - - - - - - - - - - - - - - - - - - Про людей -->
 
 <section
     class="chapter relative-section colors--secondary"
     style="--back-color:#0B8185;">
-    <picture class="grid-queen">
+    <picture class="grid-queen" id="Humans">
         <figure class="inngrid-wrap">
-            <img src="art/ordnung-riot-colored.png" alt="Various people"/>
+            <img src="art/ordnung-riot-colored.png" loading="lazy" alt="Various people"/>
         </figure>
     </picture>
     <article class="grid-queen is-without-root">
         <header class="article-chapter-header sublayer join-layers">
             <div class="inngrid-west e-align h2">※</div>
             <div class="chapter-header">
-                <h2>Про людей</h2>
+                <h2>
+                    Про людей
+                </h2>
             </div>
         </header>
     </article>
 </section>
-
 
 <section class="chapter relative-section colors--root">
 
@@ -1067,7 +1067,7 @@
 
     <article class="flower-decoration">
       <h1><a href="stories/sarana-sova/index.html" class="hover-link">О снах и совах</a></h1>
-      <img src="stories/sarana-sova/owly-1.png" style="float:right;max-width:40%;" class="zzz">
+      <img src="stories/sarana-sova/owly-1.png" loading="lazy" style="float:right;max-width:40%;" class="zzz">
       Сон одолевал зверюшек<br>
       Всяких хрюшек и индюшек<br>
       Повалил всех за диван<br>
@@ -1078,7 +1078,7 @@
     </article>
 
     <article class="flower-decoration">
-        <img src="stories/kakumeem/moonman.gif" style="float:right;">
+        <img src="stories/kakumeem/moonman.gif" loading="lazy" style="float:right;">
         <h1>
             <a
                 href="stories/kakumeem/index.html"
@@ -1134,6 +1134,7 @@
     <article style="padding-left:0;margin-left:0;">
       <img
           src="art/dvornik-egor.png"
+          loading="lazy"
           class="instead-of-text"
           style="margin-left:0;">
     </article>
@@ -1164,7 +1165,7 @@
     </article>
 
     <article>
-      <img src="stories/hooligans/hooligans.gif" alt="">
+      <img src="stories/hooligans/hooligans.gif" loading="lazy" alt="">
     </article>
 
 
@@ -1172,15 +1173,13 @@
 
     <picture class="grid-queen">
         <div class="inngrid-wrap">
-            <img src="art/vse-puchkom.png" alt="Всё пучком? Нет, только волосы.">
+            <img src="art/vse-puchkom.png" loading="lazy" alt="Всё пучком? Нет, только волосы.">
         </div>
     </picture>
 
 </section>
 
-
-<!-- ========================== Мальчику Коле -->
-
+<!-- - - - - - - - - - - - - - - - - - - - - - Мальчику Коле -->
 
 <section class="relative-section colors--root"
     style="--back-color: #F56991;--flower-color: currentColor;">
@@ -1196,25 +1195,22 @@
         Мальчик Коля обиженно поджал хвост и ушел гулять.
         </div>
         <picture class="inngrid-east-side">
-            <img src="art/pes-snikavara-dream.png" alt="Мечты пса Сникавары"
+            <img
+                src="art/pes-snikavara-dream.png"
+                loading="lazy"
+                alt="Мечты пса Сникавары"
                 style="max-width: 40em;"/>
         </picture>
     </article>
 
 </section>
 
-
-
-
-
-
-
-<!-- ========================== FOOTER -->
+<!-- - - - - - - - - - - - - - - - - - - - - - FOOTER -->
 
 <section class="relative-section colors--root">
-    <picture class="chapter grid-queen">
+    <picture class="chapter grid-queen" id="TheEnd">
         <div class="inngrid-wrap">
-            <img src="art/superfox-illbeback.jpg" alt="i`ll be back">
+            <img src="art/superfox-illbeback.jpg" loading="lazy" alt="i`ll be back">
         </div>
         <p>
             zl, 2021
@@ -1233,6 +1229,7 @@
     <picture>
         <img
             src="art/fields-of-sheep.jpg"
+            loading="lazy"
             alt="450 sheep illustrated"
             style="width:100%">
     </picture>
